@@ -1,0 +1,26 @@
+{% extends "encyclopedia/layout.html" %}
+
+<head>
+    <title>
+        {% block title %}
+            {{query|safe}}
+        {% endblock %}
+    </title>
+    <style>
+        .links{
+            text-decoration: none;
+        }
+        .links:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+{% block body %}
+    <h1>You searched for {{query}}</h1>
+    <i> The page "{{query}}" does not exist. you can <a href="{% url 'create' %}">create this page</a>, but see the result related {{query}}.</i>
+        <ul>
+            {% for result in results %}
+                <p><li><a href="wiki/{{result}}" class="links">{{result}}</a></li></p>
+            {% endfor %}
+        <ul>
+{% endblock %}

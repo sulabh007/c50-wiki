@@ -1,0 +1,156 @@
+{% load static %}
+
+<!DOCTYPE html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="icon" href="https://www.iconsdb.com/icons/preview/white/wikipedia-xxl.png" type="image/x-icon">
+        <style>
+            html, body{
+                font-family: sans-serif;
+                height: 100%;
+            }
+            body {
+                background-color: #f6f6f6;
+                overflow-y: scroll;
+                margin: 0;
+                display: block;
+            }
+            div{
+                display: block;
+            }
+            @media screen and (min-width: 982px){
+                .mainbody{
+                    padding: 1.25em 1.5em 1.5em 1.5em;
+                }
+                .mainbody, #headbase{
+                    margin-left: 11em;
+                }
+                #panel{
+                    padding-left: 0.5em;
+                }
+            }
+
+            #pagebase {
+                background-color: #fbfbfb;
+                background-position: bottom left;
+                height: 80px;
+            }
+            #headbase{
+                margin-top: -5em;
+                height: 5em;
+            }
+            @media screen and (max-width: 982px){
+                .mainbody, #headbase{
+                    margin-left: 10em;
+                }
+            }
+            .mainbody{
+                margin-top: -1px;
+                border: 1px solid #a7d7f9;
+                border-right-width: 0;
+                height: 100%;
+                background-color: #ffffff;
+            }
+            a:not([href]){
+                cursor: pointer;
+            }
+            a{
+                text-decoration: none;
+                color: #0645ad;
+                background: none;
+            }
+            
+            #panel{
+                position: absolute;
+                top: 0;
+                width: 10em;
+                left: 0;
+            }
+            #logo{
+                width: 10em;
+                height: 160px;
+                margin-bottom: 1em;
+            }
+            img{
+                display: flex;
+                align-items: center;
+                display: block; 
+                width: 140px;
+                height: 160px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .search {
+                width:100%;
+                outline-color: rgb(6, 69, 173);
+            }
+            .lik{
+                margin-block-end: 5px;
+            }
+            .links{
+                padding: 6px;
+                
+                text-decoration: none;
+            }
+            .links:hover {
+                text-decoration: underline;
+            }
+            
+            .sear:hover {
+                box-shadow: 0 0 4px rgb(216, 214, 214);
+            }
+            .butto{
+                padding-left:99px;
+                padding-top:5px;
+                color:blue;
+
+            }
+            .bute{
+                background-color: rgb(51, 102, 204);
+                border-color: rgb(51, 102, 204);
+                color:white;
+                outline:none;
+                border:none;
+                font-weight: bold;
+                height:18px;
+            }
+            .bute:hover{
+                filter: brightness(115%);
+               
+            }
+        </style>
+    </head>
+    <body >
+        <div id="pagebase" class="top"></div>
+        <div id="headbase" class="top"></div>
+        <div id="content" class="mainbody">
+            <a id="btop"></a>
+            <div class="main col">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+        <div id="panel">
+            <div id="logo">
+                <img src="https://logos-download.com/wp-content/uploads/2016/03/Wikipedia_logo_logotype_emblem.png" alt="logo">
+            </div>
+            <form action="{% url 'index' %}" method="get">
+                <div class="sear">
+                    <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
+                </div>
+                <div class="butto">
+                    <input type="submit" value="Search" class="bute">
+                </div>
+            </form>
+            <div class="lik">
+                <a class="links" href="{% url 'index' %}">Home</a>
+            </div>
+            <div class="lik">
+                <a class="links" href="{% url 'create' %}">Create New Page</a>
+            </div>
+            <div class="lik">
+                 <a class="links" href="{% url 'random' %}">Random Page</a>
+            </div>
+        </div>
+    </body>
+</html>

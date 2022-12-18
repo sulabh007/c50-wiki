@@ -1,0 +1,30 @@
+{% extends "encyclopedia/layout.html" %}
+
+<head>
+    <title>
+        {% block title %}
+            Encyclopedia
+        {% endblock %}
+    </title>
+    <style>
+        .links{
+            text-decoration: none;
+            margin:6px;
+        }
+        .links:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+
+
+{% block body %}
+    <h1>All Pages</h1>
+
+    <ul>
+        {% for entry in entries %}
+            <li> <a class="links" href="wiki/{{entry}}" >{{ entry }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
